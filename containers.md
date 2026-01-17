@@ -35,14 +35,33 @@ docker inspect -f '{{ range $name, $net := .NetworkSettings.Networks }}{{ $name 
 docker inspect -f '{{ json .NetworkSettings.Ports }}' <container>
 ```
 
-## Get container environment variables
+### Get container environment variables
 ```sh
 docker inspect -f '{{ range .Config.Env }}{{ . }}{{ "\n" }}{{ end }}' <container>
 ```
 
-## Get container mounts (volumes and bind mounts)
+### Get container mounts (volumes and bind mounts)
 ```sh
 docker inspect -f '{{ range .Mounts }}{{ .Source }} -> {{ .Destination }}{{ "\n" }}{{ end }}' <container>
 ```
 
 ---
+
+## File handling with containers
+
+`docker container cp` allows copying files and directories between the host and a container.
+The container does **not** need to be running.
+
+---
+
+### Copy files from container to host
+
+```sh
+docker container cp <container>:<container_path> <host_path>
+```
+
+### Copy files from host to container
+
+```sh
+docker container cp <host_path> <container>:<container_path>
+```
