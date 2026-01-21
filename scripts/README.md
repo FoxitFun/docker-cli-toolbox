@@ -1,0 +1,4 @@
+- All scripts work on Ubuntu 20.04+.
+- Written in bash.
+- Require Docker Engine and docker compose v2.
+- User must have permission to run Docker without sudo!
